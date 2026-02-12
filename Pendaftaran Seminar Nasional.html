@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pendaftaran Seminar Nasional</title>
+    </head>
+
+    <style> 
+        body {
+            font-family:        Verdana;
+            background-color: LightGray;
+
+            align-items:        center;
+            justify-content:    center;
+            display:            flex;
+        }
+
+        .Submission_Form {
+            width: 420px;
+            background-color: white;
+            box-shadow:         0 10px 25px rgba(0, 0, 0, 0.15);
+            
+            border:             none;
+            border-radius:      8px;
+
+            padding:            25px;
+        }
+
+        h1 {
+            text-align:         center;
+            margin-bottom:      20px;
+        }
+
+        p{
+            text-align:         center;
+            margin-bottom:      6px;
+        }
+
+        input{
+            width:              95%;
+            font-size:          16px; 
+
+            border:             1px solid;
+            border-radius:      4px;
+
+            padding:            10px;
+            display:            block;
+        } 
+        
+        select {
+            width:              100%;
+            font-size:          16px; 
+
+            border:             1px solid;
+            border-radius:      4px;
+
+            padding:            10px;
+            display:            block;
+        }
+
+        input:focus, select:focus{
+            outline:            none;
+            border-color:     SkyBlue;
+            box-shadow:         0 10px 25px rgba(135, 206, 235, 0.15);
+        }
+
+        button {
+            width:              100%;
+            background-color: ForestGreen;
+            color:            white;
+            font-size:          16px;
+            font-weight:        bold;
+
+            border:             none;
+            border-radius:      12px;
+
+            padding:            12px;
+            margin-top:         20px;
+            margin-bottom:      20px;
+        }
+
+        button:hover {
+            background:       Green;
+        }
+    </style>
+
+    <body>
+    <div 
+    class="Submission_Form"
+    >
+        <h1>    Pendaftaran Peserta Seminar Nasional    </h1>
+        <p>     Silakan isi data diri untuk mendaftar.  </p>
+
+        <form>
+            <h3>    Nama Lengkap    </h3>
+            <input 
+            type    = "text" 
+            id      = "Full_Name"
+            >
+
+            <h3>    NIM             </h3>
+            <input 
+            type    = "text" 
+            id      = "Student_ID"
+            >
+
+            <h3>    Program Studi   </h3>
+            <select 
+            id      = "Study_Branch"
+            >
+                <option>    Teknik Informatika  </option>
+                <option>    Sistem Informasi    </option>
+                <option>    Teknik Elektro      </option>
+            </select>
+
+            <h3>    Alamat E-mail   </h3>
+            <input 
+            type    = "email" 
+            id      = "Email_Address"
+            >
+
+            <button 
+            type="button" 
+            onclick="Submit_Button()"
+            >Daftar</button>
+        </form>
+
+        <div id="Participant_Data"></div>
+    </div>
+    
+    <script>
+        function Submit_Button() {
+            var Full_Name_disp      = document.getElementById("Full_Name").value;
+            var Student_ID_disp     = document.getElementById("Student_ID").value;
+            var Study_Branch_disp   = document.getElementById("Study_Branch").value;
+            var Email_Address_disp  = document.getElementById("Email_Address").value;
+
+            if (
+                Full_Name_disp      === ""|| 
+                Student_ID_disp     === ""|| 
+                Study_Branch_disp   === ""|| 
+                Email_Address_disp  ===""){
+                alert("Mohon lengkapi data diri anda.");
+                return;
+            }
+        
+            alert(      "Anda sudah terdaftar sebagai peserta seminar."         );
+
+            document.getElementById("Participant_Data").innerHTML =`
+            
+            <h3 
+            style="text-align: center"
+            >Identitas Peserta</h3>
+
+            <p>Nama Lengkap: ${Full_Name_disp}</p>
+            <p>NIM: ${Student_ID_disp}</p>
+            <p>Program Studi: ${Study_Branch_disp}</p>
+            <p>Alamat E-mail: ${Email_Address_disp}</p>
+            `;
+        } 
+    </script>
+    </body>
+</html>
